@@ -63,8 +63,8 @@ class TestClassMonth(unittest.TestCase):
         '''
         m = Month(2021, 2)
         # self.assertEqual(m.workdays, )  # not test 3rd part lib
-        self.assertEqual(m.workdays_number, 20, 'Workdays number calc')
-        self.assertEqual(m.workdays_hours, 160, 'Woarkdays hours calc')
+        self.assertEqual(m.workdays_number, 20, 'Workdays NUMBER calc')
+        self.assertEqual(m.workdays_hours, 160, 'Woarkdays HOURS calc')
 
 
 class TestClassWorkCalendar(unittest.TestCase):
