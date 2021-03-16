@@ -66,9 +66,25 @@ class TestClassMonth(unittest.TestCase):
         self.assertEqual(m.workdays_number, 20, 'Workdays NUMBER calc')
         self.assertEqual(m.workdays_hours, 160, 'Woarkdays HOURS calc')
 
+    def test_get_workdays_month_days(self):
+        m = Month(2021, 1)
+        m._get_workdays_month_days(1)
+        # a monkey patch here wouold be better
+        self.assertEqual(m._get_workdays_month_days(1), [1, 4, 5, 6, 7, 8, 11, 12, 13, 14, 15, 18, 19, 20, 21, 22, 25, 26, 27, 28, 29])
+
+    def test_get_week_workdays(self):
+        m = Month(2021, 1)  # just to initialize the class and get access to the method
+        mworkdays = m._get_week_workdays([0, 0, 3, 4, 5, 6, 7], [3, 4, 5, 8, 9])
+        self.assertEqual(mworkdays, ['_', '_', 3, 4, 5, '-', '-'])
+
+    def test_get_calendar(self):
+        '''
+
+        '''
+        m = Month(2021, 1)
+        print(m.get_calendar())
 
 class TestClassWorkCalendar(unittest.TestCase):
-
 
     def test_import(self):
         '''
@@ -88,8 +104,16 @@ class TestClassWorkCalendar(unittest.TestCase):
         '''
         Current Year was set, its not default.
         '''
-        w = WCal(2022)
-        self.assertEqual(w.year, 2022)
+        w = WCal(2021)
+        self.assertEqual(w.year, 2021)
+
+    def test_get_workdays(self):
+        '''
+        init get workdayes attr set
+        '''
+        w = WCal(2021)
+
+        self.assertIsInstance(w.workdays, list)
 
 
 
